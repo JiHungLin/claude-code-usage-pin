@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "claude-usage-pin"
+version = "0.1.0"
+description = "Claude Code 用量浮動監控視窗"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "PyQt5>=5.15",
+    "requests>=2.28",
+]
+
+[project.scripts]
+claude-usage-pin = "claude_usage_pin:main"
+
+[tool.setuptools]
+py-modules = ["claude_usage_pin"]

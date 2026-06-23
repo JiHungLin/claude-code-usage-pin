@@ -356,7 +356,7 @@ class FloatingWindow(QWidget):
 
 # ── 進入點 ────────────────────────────────────────────────────────────────────
 
-if __name__ == "__main__":
+def main():
     app = QApplication(sys.argv)
     app.setQuitOnLastWindowClosed(False)
 
@@ -367,3 +367,7 @@ if __name__ == "__main__":
     win = FloatingWindow()
     win.show()
     sys.exit(app.exec_())
+
+
+if __name__ == "__main__":
+    main()
