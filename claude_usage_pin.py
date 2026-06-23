@@ -9,7 +9,7 @@ from pathlib import Path
 
 import requests
 from PyQt5.QtCore import QPoint, Qt, QThread, QTimer, pyqtSignal
-from PyQt5.QtGui import QColor, QFont, QIcon, QPainter, QPen, QPixmap
+from PyQt5.QtGui import QColor, QCursor, QFont, QIcon, QPainter, QPen, QPixmap
 from PyQt5.QtWidgets import (
     QAction,
     QApplication,
@@ -149,9 +149,10 @@ class FloatingWindow(QWidget):
         self.setFixedWidth(270)
         self.setMinimumHeight(130)
         self.setStyleSheet(_WIN_STYLE)
-        # 預設放在右上角
-        screen = QApplication.primaryScreen().availableGeometry()
-        self.move(screen.right() - 280, screen.top() + 10)
+        # 放在滑鼠所在螢幕的右上角
+        screen = QApplication.screenAt(QCursor.pos()) or QApplication.primaryScreen()
+        geo = screen.availableGeometry()
+        self.move(geo.right() - 280, geo.top() + 10)
 
     # ── UI 元件 ───────────────────────────────────────────────────────────────
 
