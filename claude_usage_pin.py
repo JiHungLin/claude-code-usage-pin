@@ -2,6 +2,7 @@
 """Claude Code 用量浮動視窗 — 置頂、可拖拉、關閉後收至工具列。"""
 
 import json
+import signal
 import sys
 import time
 from datetime import datetime, timedelta
@@ -368,6 +369,13 @@ def main():
     if not QSystemTrayIcon.isSystemTrayAvailable():
         print("錯誤：系統不支援工具列圖示（System Tray）", file=sys.stderr)
         sys.exit(1)
+
+    # 讓 Ctrl+C 能正常結束
+    signal.signal(signal.SIGINT, lambda *_: app.quit())
+    # Qt 事件迴圈會擋住 Python signal，用 timer 定期讓 Python 有機會處理
+    sig_timer = QTimer()
+    sig_timer.start(200)
+    sig_timer.timeout.connect(lambda: None)
 
     win = FloatingWindow()
     win.show()
