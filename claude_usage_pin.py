@@ -147,7 +147,11 @@ class FloatingWindow(QWidget):
         self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.Tool)
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.setFixedWidth(270)
+        self.setMinimumHeight(130)
         self.setStyleSheet(_WIN_STYLE)
+        # 預設放在右上角
+        screen = QApplication.primaryScreen().availableGeometry()
+        self.move(screen.right() - 280, screen.top() + 10)
 
     # ── UI 元件 ───────────────────────────────────────────────────────────────
 
