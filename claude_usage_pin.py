@@ -24,7 +24,7 @@ from PyQt5.QtWidgets import (
 CREDENTIALS_PATH = Path.home() / ".claude" / ".credentials.json"
 USAGE_URL = "https://api.anthropic.com/api/oauth/usage"
 TOKEN_MIN_TTL_MS = 5 * 60 * 1000
-REFRESH_INTERVAL_MS = 120_000  # 2 分鐘
+REFRESH_INTERVAL_MS = 300_000  # 5 分鐘
 
 
 # ── 資料抓取 ─────────────────────────────────────────────────────────────────
