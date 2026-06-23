@@ -1,5 +1,7 @@
 .conda/
+.venv/
 __pycache__/
 *.pyc
 *.pyo
 .env
+claude-usage-pin.desktop
